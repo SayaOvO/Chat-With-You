@@ -15,7 +15,6 @@ import {
 import { ConnectionState, Track } from "livekit-client";
 import * as React from "react";
 import { StartMediaButton } from "./start-medium";
-import { useMediaQuery } from "@/hooks/use-media-query";
 
 /** @public */
 export type ControlBarControls = {
@@ -68,14 +67,12 @@ export function ControlBar({
 
   const isConnected = connectionState === ConnectionState.Connected;
 
-
   const layoutContext = useMaybeLayoutContext();
   React.useEffect(() => {
     if (layoutContext?.widget.state?.showChat !== undefined) {
       setIsChatOpen(layoutContext?.widget.state?.showChat);
     }
   }, [layoutContext?.widget.state?.showChat]);
-
 
   const visibleControls = { leave: true, ...controls };
 
@@ -92,8 +89,6 @@ export function ControlBar({
     visibleControls.screenShare ??= localPermissions.canPublish;
     visibleControls.chat ??= localPermissions.canPublishData && controls?.chat;
   }
-
- 
 
   const browserSupportsScreenSharing = supportsScreenSharing();
 
@@ -126,9 +121,7 @@ export function ControlBar({
   );
 
   if (controls?.leave) {
-    return (
-      <p>Join...</p>
-    )
+    return <p>Join...</p>;
   }
   return (
     <div {...props} className={cn(props.className, "lk-control-bar")}>
@@ -138,7 +131,9 @@ export function ControlBar({
             source={Track.Source.Microphone}
             onChange={microphoneOnChange}
           >
-            <span className="text-sm hidden sm:inline md:hidden lg:inline">Microphone</span>
+            <span className="text-sm hidden sm:inline md:hidden lg:inline">
+              Microphone
+            </span>
           </TrackToggle>
           <div className="lk-button-group-menu">
             <MediaDeviceMenu
@@ -152,11 +147,10 @@ export function ControlBar({
       )}
       {visibleControls.camera && (
         <div className="lk-button-group">
-          <TrackToggle
-            source={Track.Source.Camera}
-            onChange={cameraOnChange}
-          >
-            <span className="text-sm hidden sm:inline md:hidden lg:inline">Camera</span>
+          <TrackToggle source={Track.Source.Camera} onChange={cameraOnChange}>
+            <span className="text-sm hidden sm:inline md:hidden lg:inline">
+              Camera
+            </span>
           </TrackToggle>
           <div className="lk-button-group-menu">
             <MediaDeviceMenu
@@ -174,21 +168,25 @@ export function ControlBar({
           captureOptions={{ audio: true, selfBrowserSurface: "include" }}
           onChange={onScreenShareChange}
         >
-            <span className="text-sm hidden sm:inline md:hidden lg:inline">
-              {isScreenShareEnabled ? "Stop screen share" : "Share screen"}
-            </span>
+          <span className="text-sm hidden sm:inline md:hidden lg:inline">
+            {isScreenShareEnabled ? "Stop screen share" : "Share screen"}
+          </span>
         </TrackToggle>
       )}
       {visibleControls.chat && (
         <ChatToggle>
           <ChatIcon />
-          <span className="text-sm hidden sm:inline md:hidden lg:inline">Chat</span>
+          <span className="text-sm hidden sm:inline md:hidden lg:inline">
+            Chat
+          </span>
         </ChatToggle>
       )}
       {visibleControls.leave ? (
         <DisconnectButton>
           <LeaveIcon />
-          <span className="text-sm hidden sm:inline md:hidden lg:inline">Leave</span>
+          <span className="text-sm hidden sm:inline md:hidden lg:inline">
+            Leave
+          </span>
         </DisconnectButton>
       ) : (
         <button>Join</button>
