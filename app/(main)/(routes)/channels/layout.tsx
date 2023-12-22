@@ -7,7 +7,7 @@ export default function ChannelPageLayout({
 }) {
   return (
     <>
-      <nav className="h-full fixed left-0 hidden md:flex flex-col">
+      <nav className="h-full fixed left-0 hidden md:flex flex-col z-50">
         <NavigationSidebar />
       </nav>
       <div className="h-screen min-h-screen">{children}</div>

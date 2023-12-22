@@ -15,7 +15,7 @@ export async function NavigationSidebar() {
 
   const allServers = await getAllServersJoined(profile.id);
   return (
-    <nav className="w-[72px] h-full  bg-[#e3e5e8] flex flex-col">
+    <div className="w-[72px] h-full bg-[#e3e5e8] flex flex-col">
       <NavigationDM />
       <ScrollArea className="flex-1">
         <ul className="flex flex-col space-y-2 my-3">
@@ -25,6 +25,6 @@ export async function NavigationSidebar() {
         </ul>
         <NavigationAddServer />
       </ScrollArea>
-    </nav>
+    </div>
   );
 }
