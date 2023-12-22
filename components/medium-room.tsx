@@ -4,38 +4,32 @@ import "@livekit/components-styles";
 import {
   isEqualTrackRef,
   isTrackReference,
-  isWeb,
   log,
-  TrackReferenceOrPlaceholder,
-} from "@livekit/components-core";
+  TrackReferenceOrPlaceholder
+} from  "@livekit/components-core";
 import {
-  LiveKitRoom,
-  VideoConference,
-  GridLayout,
-  ParticipantTile,
-  RoomAudioRenderer,
-  useTracks,
-  Toast,
-  Chat,
-  ChatToggle,
-  useCreateLayoutContext,
-  LayoutContextProvider,
-  WidgetState,
-  useConnectionState,
-  useRoomContext,
-  usePinnedTracks,
-  FocusLayoutContainer,
   CarouselLayout,
   FocusLayout,
+  FocusLayoutContainer,
+  GridLayout,
+  LayoutContextProvider,
+  LiveKitRoom,
+  ParticipantTile,
+  Toast,
+  useConnectionState,
+  useCreateLayoutContext,
+  usePinnedTracks,
+  useRoomContext,
+  useTracks,
+  WidgetState
 } from "@livekit/components-react";
 
 import { useUser } from "@clerk/nextjs";
-import { useEffect, useRef, useState } from "react";
 import { ConnectionState, Track } from "livekit-client";
-import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { ControlBar } from "./medium/control-bar";
 import { Button } from "./ui/button";
-import { Loader2 } from "lucide-react";
 
 interface MediumRoomProps {
   chatId: string;

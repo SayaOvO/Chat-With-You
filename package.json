@@ -12,6 +12,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.29.1",
     "@hookform/resolvers": "^3.3.2",
+    "@livekit/components-core": "^0.8.2",
     "@livekit/components-react": "^1.5.1",
     "@livekit/components-styles": "^1.0.8",
     "@radix-ui/react-avatar": "^1.0.4",

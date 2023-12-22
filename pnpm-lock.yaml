@@ -11,6 +11,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.2(react-hook-form@7.49.2)
+  '@livekit/components-core':
+    specifier: ^0.8.2
+    version: 0.8.2(livekit-client@1.15.5)(tslib@2.6.2)
   '@livekit/components-react':
     specifier: ^1.5.1
     version: 1.5.1(livekit-client@1.15.5)(react-dom@18.2.0)(react@18.2.0)(tslib@2.6.2)

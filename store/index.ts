@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from "./counterSlice"
 import modalSlice from './toggle-modal-slice'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import replyingSlice  from './toggle-replying-slice'
