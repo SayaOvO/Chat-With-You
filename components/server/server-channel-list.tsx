@@ -94,43 +94,42 @@ export function ServerChannelList({
       </p>
       <ul>
         {channels.map((channel) => (
-          <li key={channel.id}>
-            <Link
-              href={`/channels/${server.id}/${channel.id}`}
-              className={cn(
-                "flex items-center p-2 hover:bg-[#e3e5e8] hover:cursor-pointer group rounded-md mb-1",
-                params?.channelId === channel.id && "bg-[#e3e5e8]"
-              )}
-            >
-              {channel.type === "text" ? (
-                <Hash className="h-4 w-4 flex-shrink-0 mr-1" />
+          <li
+            key={channel.id}
+            className={cn(
+              "flex items-center p-2 hover:bg-[#e3e5e8] hover:cursor-pointer group rounded-md mb-1",
+              params?.channelId === channel.id && "bg-[#e3e5e8]"
+            )}
+            onClick={() => router.push(`/channels/${server.id}/${channel.id}`)}
+          >
+            {channel.type === "text" ? (
+              <Hash className="h-4 w-4 flex-shrink-0 mr-1" />
+            ) : (
+              <Mic className="w-4 h-4 flex-shrink-0 mr-1" />
+            )}
+            <ActionTooltip description={channel.name} side="top">
+              <p className="text-primary truncate">{channel.name}</p>
+            </ActionTooltip>
+            {role !== "member" &&
+              (channel.name === "general" ? (
+                <Lock className="h-4 w-4 ml-auto" />
               ) : (
-                <Mic className="w-4 h-4 flex-shrink-0 mr-1" />
-              )}
-              <ActionTooltip description={channel.name} side="top">
-                <p className="text-primary truncate">{channel.name}</p>
-              </ActionTooltip>
-              {role !== "member" &&
-                (channel.name === "general" ? (
-                  <Lock className="h-4 w-4 ml-auto" />
-                ) : (
-                  <div
-                    className="ml-auto flex space-x-1 opacity-0 group-hover:opacity-100
+                <div
+                  className="ml-auto flex space-x-1 opacity-0 group-hover:opacity-100
               transition"
-                  >
-                    <ActionTooltip description="Edit Channel" side="top">
-                      <button onClick={(e) => onEditChannel(e, channel)}>
-                        <Edit className="h-4 w-4" />
-                      </button>
-                    </ActionTooltip>
-                    <ActionTooltip description="Delete Channel" side="top">
-                      <button onClick={(e) => onDeleteChannel(e, channel)}>
-                        <Trash className="h-4 w-4" />
-                      </button>
-                    </ActionTooltip>
-                  </div>
-                ))}
-            </Link>
+                >
+                  <ActionTooltip description="Edit Channel" side="top">
+                    <button onClick={(e) => onEditChannel(e, channel)}>
+                      <Edit className="h-4 w-4" />
+                    </button>
+                  </ActionTooltip>
+                  <ActionTooltip description="Delete Channel" side="top">
+                    <button onClick={(e) => onDeleteChannel(e, channel)}>
+                      <Trash className="h-4 w-4" />
+                    </button>
+                  </ActionTooltip>
+                </div>
+              ))}
           </li>
         ))}
       </ul>

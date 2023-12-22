@@ -30,7 +30,7 @@ import { FileUpload } from "../file-upload";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
-  name: z.string().min(1, {
+  name: z.string().trim().min(1, {
     message: "Server name is required",
   }),
   imageUrl: z.string().min(1, {
@@ -63,8 +63,8 @@ export function CreateServerModal() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post("/api/servers", values);
-      router.refresh();
       router.push(`/channels/${response.data.id}`);
+      router.refresh();
       handleClose();
     } catch (error) {
       console.log("submit create server", error);
